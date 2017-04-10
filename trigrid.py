@@ -60,8 +60,7 @@ def grid_rect(w, h):
         s = 'l' if i%2==0 else 'r'
         for j in range(-offs, w-offs):
             tiles.append(TriTile(j, i, s))
-            # skip half of the pair at the sides
-            if j>-offs and j<w-offs-1:
+            if (j>-offs or i%2==0) and (i%2!=0 or j<w-offs-1):
                 tiles.append(TriTile(j, i, conj_s(s)))
 
     return tiles
